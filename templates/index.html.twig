@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {% include 'css.html.twig' %}
+        {% block style %}{% endblock %}
+
+        <title>ZSH</title>
+    </head>
+
+    <body data-bs-theme="dark" onload="update_caret_position()">
+        <main class="terminal">
+            {% block content %}{% endblock %}
+            
+            <div id="command_output">
+                {% block output %}{% endblock %}
+            </div>
+
+            {% block main %}
+            <div class="mt-4">
+                <form method="post" id="shell" action="{{ path('kernel') }}">
+                    <div class="caret-block" style="display: flex; align-items: center;">
+                        <span style="margin-right: 5px;">guest@asd<span class="text-command">:{{ route }}$</span></span>
+                        <textarea class="form-control text-light" name="command" id="command_input" rows="1" wrap="off" maxlength="50" oninput="update_caret_position()" onkeydown="handle_enter_command(event)" autofocus></textarea>
+                        <span class="caret" id="custom_caret"></span>
+                    </div>
+                </form>
+            </div>
+            {% endblock %}
+        </main>
+
+        {% include 'js.html.twig' %}
+
+        {% block script %}{% endblock %}
+    </body>
+</html>
