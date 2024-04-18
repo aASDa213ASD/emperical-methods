@@ -1,0 +1,102 @@
+@font-face {
+    font-family: "JetBrains";
+    src: url('../fonts/JetBrainsMono-ExtraLight.ttf') format('truetype');
+    font-style: normal;
+}
+
+html {
+    font-size: 24px;
+    font-weight: 100;
+}
+
+body {
+    font-family: "JetBrains";
+    font-size: 24px;
+    margin: 0;
+    padding: 25px 40px;
+    min-height: 99%;
+    width: 100%;
+    min-width: 550px;
+    color: #ffffff;
+    background: #1b1918;
+    overflow-x: hidden;
+}
+
+::selection {
+    color: #211830;
+    background-color: #519975;
+}
+
+::-moz-selection {
+    color: #211830;
+    background-color: #519975;
+}
+
+table {
+    border-collapse: collapse;
+    border: none;
+    width: 70%;
+}
+  
+td, th {
+    border-bottom: 1px solid #304038;
+    text-align: left;
+    padding: 5px;
+    padding-right: 30px;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    font: inherit;
+    color: #519975;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.12em solid #519975;
+    border-radius: 0.15em;
+    display: grid;
+    place-content: center;
+}
+  
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    /* Windows High Contrast Mode */
+    background-color: #bbbbbb;
+}
+  
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+  
+input[type="checkbox"]:focus {
+    outline: none;
+}
+  
+input[type="checkbox"]:disabled {
+    --form-control-color: var(--form-control-disabled);
+
+    color: var(--form-control-disabled);
+    cursor: not-allowed;
+}
+
+input[type="date"] {
+    padding: 4px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #101010;
+    color: #4cb469;
+    text-shadow: 0 0 5px #22865e; 
+}
+
+input[type="date"]:focus {
+    border: none;
+}

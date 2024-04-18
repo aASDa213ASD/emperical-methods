@@ -6,7 +6,8 @@ const directory_passthrough = [
 ];
 
 const commands_passthrough = [
-    "probability"
+    "probability",
+    "ls"
 ];
 
 document.querySelector("form").onsubmit = async function(e)
@@ -100,7 +101,7 @@ function throw_command_not_found(command)
         return;
     
     const output = document.getElementById("command_output");
-    const text = "<div><p class='text-description'>Command <span class=text-command>'" + command + "'</span> not found. For a list of commands, type <span class='text-command'>'help'</span></p></div>";
+    const text = "<div class='mt-2'><pre class='text-description'>Command <span class=text-command>'" + command + "'</span> not found. For a list of commands, type <span class='text-command'>'help'</span></pre></div>";
     output.innerHTML = output.innerHTML + text;
 }
 

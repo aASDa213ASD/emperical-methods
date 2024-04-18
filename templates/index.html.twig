@@ -7,7 +7,7 @@
         {% include 'css.html.twig' %}
         {% block style %}{% endblock %}
 
-        <title>ZSH</title>
+        <title>Terminal</title>
     </head>
 
     <body data-bs-theme="dark" onload="update_caret_position()">
@@ -23,7 +23,7 @@
                 <form method="post" id="shell" action="{{ path('kernel') }}">
                     <div class="caret-block" style="display: flex; align-items: center;">
                         <span style="margin-right: 5px;">client@asd<span class="text-command">:{{ route }}$</span></span>
-                        <textarea class="form-control text-light" name="command" id="command_input" rows="1" wrap="off" maxlength="50" oninput="update_caret_position()" onkeydown="handle_enter_command(event)" autofocus></textarea>
+                        <textarea class="form-control text-light" name="command" id="command_input" rows="1" wrap="off" maxlength="100" oninput="update_caret_position()" onkeydown="handle_enter_command(event)" autofocus></textarea>
                         <span class="caret" id="custom_caret"></span>
                     </div>
                 </form>

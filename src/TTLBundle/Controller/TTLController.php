@@ -31,17 +31,24 @@ class TTLController extends AbstractController
     public function kernel(Request $request): Response
     {
         $command = $request->request->get("command");
-        $command = explode(' ', $command);
-
-        //dd($command);
+        $input_array = explode(' ', $command);
         
-        //dd(urlencode($command[2]));
+        $command = $input_array[0];
+        $args = array_slice($input_array, 1);
 
-        switch ($command[0])
+        switch ($command)
         {
             case "probability":
-                if (isset($command[1]) && "add" == $command[1])
-                    return $this->redirectToRoute("probability_add", [ "a" => urlencode($command[2]), "b" => urlencode($command[3]) ]);
+                if (isset($args[0]) && "add" == $args[0])
+                    return $this->redirectToRoute("probability_add", array_slice($args, 1));
+                else if (isset($args[0]) && "multiply" == $args[0])
+                    return $this->redirectToRoute("probability_multiply", array_slice($args, 1));
+                else if (isset($args[0]) && "full" == $args[0])
+                    return $this->redirectToRoute("probability_full", array_slice($args, 1));
+                else if (isset($args[0]) && "single" == $args[0])
+                    return $this->redirectToRoute("probability_single", array_slice($args, 1));
+                else if (isset($args[0]) && "bayes" == $args[0])
+                    return $this->redirectToRoute("probability_bayes", array_slice($args, 1));
         }
 
         return $this->redirectToRoute("home");

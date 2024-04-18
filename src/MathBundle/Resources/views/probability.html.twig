@@ -1,0 +1,12 @@
+{% extends 'index.html.twig' %}
+
+{% block content %}
+  <div id="initial_message">
+    <pre>Operation <span class="text-command">probability <strong>{{operation_name}}</strong></span></pre>
+    <pre>Passed arguments: <span class="text-important">{{arguments}}</span></pre>
+    <hr>
+    <pre>Result: <span class="text-important fw-bold text-decoration-underline link-offset-2">{{result}}</span></pre>
+  </div>
+
+  {% block output %}{% endblock %}
+{% endblock %}
