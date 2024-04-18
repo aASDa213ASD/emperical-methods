@@ -14,10 +14,14 @@ class TTLController extends AbstractController
      * @Route("/", name="home")
      * @return Response
      */
-    public function home(): Response
+    public function home(Request $request): Response
     {
+        $route = $this->generateUrl(
+            $request->attributes->get('_route')
+        );
+
         return $this->render("@TTL/home.html.twig", [
-            "route" => "/"
+            "route" => $route
         ]);
     }
 
@@ -27,11 +31,17 @@ class TTLController extends AbstractController
     public function kernel(Request $request): Response
     {
         $command = $request->request->get("command");
+        $command = explode(' ', $command);
+
+        //dd($command);
         
-        switch ($command)
+        //dd(urlencode($command[2]));
+
+        switch ($command[0])
         {
-            case "system":
-                return $this->redirectToRoute("system");
+            case "probability":
+                if (isset($command[1]) && "add" == $command[1])
+                    return $this->redirectToRoute("probability_add", [ "a" => urlencode($command[2]), "b" => urlencode($command[3]) ]);
         }
 
         return $this->redirectToRoute("home");

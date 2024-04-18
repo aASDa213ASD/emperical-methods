@@ -6,13 +6,13 @@ const directory_passthrough = [
 ];
 
 const commands_passthrough = [
-    "system"
+    "probability"
 ];
 
 document.querySelector("form").onsubmit = async function(e)
 {
     const input = document.querySelector('textarea[name="command"]'); 
-    const cmd = input.value.split(' ');
+    const cmd = input.value.split(' ', 1);
 
     submitForm = false;
     e.preventDefault();
